@@ -31,7 +31,7 @@
                     <CheckBox HorizontalAlignment="Center"/>
                 </StackPanel>
             </StackPanel>
-            <Button x:Name="generate" Width="100" Margin="10">Generate Slide</Button>
+            <Button x:Name="generate" Width="100" Margin="10" Click="generate_Click">Generate Slide</Button>
         </StackPanel>
         
     </Grid>

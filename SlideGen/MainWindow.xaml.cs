@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -28,23 +29,36 @@ namespace SlideGen
 
         private void generate_Click(object sender, RoutedEventArgs e)
         {
-            //Create a new PowerPoint presentation
-            IPresentation powerpointDoc = Presentation.Create();
 
-            //Add a blank slide to the presentation
-            ISlide slide = powerpointDoc.Slides.Add(SlideLayoutType.Blank);
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
 
-            //Add a textbox to the slide
-            IShape shape = slide.AddTextBox(400, 100, 500, 100);
 
-            //Add a text to the textbox.
-            shape.TextBody.AddParagraph("Hello World!!!");
+                if (!string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    //Create a new PowerPoint presentation
+                    IPresentation powerpointDoc = Presentation.Create();
 
-            //Save the PowerPoint presentation
-            powerpointDoc.Save("Sample5.pptx");
+                    //Add a blank slide to the presentation
+                    ISlide slide = powerpointDoc.Slides.Add(SlideLayoutType.Blank);
 
-            //Close the PowerPoint presentation
-            powerpointDoc.Close();
+                    //Add a textbox to the slide
+                    IShape shape = slide.AddTextBox(400, 100, 500, 100);
+
+                    //Add a text to the textbox.
+                    shape.TextBody.AddParagraph("Hello World!!!");
+
+                    //Save the PowerPoint presentation
+                    powerpointDoc.Save(fbd.SelectedPath + "/ExampleSlide.pptx");
+
+                    //Close the PowerPoint presentation
+                    powerpointDoc.Close();
+                }
+            }
+
+            //Completion message
+            System.Windows.MessageBox.Show("Powerpoint slide saved!", "Powerpoint generator");
         }
     }
 }
