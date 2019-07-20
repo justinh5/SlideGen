@@ -8,12 +8,30 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <TextBox Text="Title" TextAlignment="Center" Width="300" Height="20" />
-            <TextBox Text="Insert Slide Text Here" TextAlignment="Left"  />
-            <TextBlock>Suggested Images</TextBlock>
-            <StackPanel>
-                
+            <TextBox Text="Title" TextAlignment="Center" Width="300" Height="20" Margin="5" />
+            <TextBox Text="Insert Slide Text Here" TextAlignment="Left" MinHeight="200" Margin="5"  />
+            <TextBlock TextAlignment="Center">Suggested Images</TextBlock>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="{x:Type Image}">
+                        <Setter Property="Margin" Value="10,0,10,5"/>
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel>
+                   <Image Height="100" Source="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"/>
+                    <CheckBox HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel>
+                    <Image Height="100" Source="https://www.w3schools.com/w3images/fjords.jpg"/>
+                    <CheckBox HorizontalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel>
+                    <Image Height="100" Source="https://www.w3schools.com/w3images/fjords.jpg"/>
+                    <CheckBox HorizontalAlignment="Center"/>
+                </StackPanel>
             </StackPanel>
+            <Button Width="100" Margin="10">Generate Slide</Button>
         </StackPanel>
         
     </Grid>

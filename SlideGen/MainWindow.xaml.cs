@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Syncfusion.Presentation;
 
 namespace SlideGen
 {
@@ -23,6 +24,24 @@ namespace SlideGen
         public MainWindow()
         {
             InitializeComponent();
+
+            ////Create a new PowerPoint presentation
+            //IPresentation powerpointDoc = Presentation.Create();
+
+            ////Add a blank slide to the presentation
+            //ISlide slide = powerpointDoc.Slides.Add(SlideLayoutType.Blank);
+
+            ////Add a textbox to the slide
+            //IShape shape = slide.AddTextBox(400, 100, 500, 100);
+
+            ////Add a text to the textbox.
+            //shape.TextBody.AddParagraph("Hello World!!!");
+
+            ////Save the PowerPoint presentation
+            //powerpointDoc.Save("Sample.pptx");
+
+            ////Close the PowerPoint presentation
+            //powerpointDoc.Close();
         }
     }
 }
