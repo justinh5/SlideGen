@@ -22,6 +22,7 @@ namespace SlideGen
     /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
@@ -43,11 +44,15 @@ namespace SlideGen
                     //Add a blank slide to the presentation
                     ISlide slide = powerpointDoc.Slides.Add(SlideLayoutType.Blank);
 
-                    //Add a textbox to the slide
-                    IShape shape = slide.AddTextBox(400, 100, 500, 100);
+                    //Add Title to the slide
+                    IShape title = slide.AddTextBox(400, 80, 500, 100);
+                    title.TextBody.AddParagraph(SlideTitle.Text);
 
-                    //Add a text to the textbox.
-                    shape.TextBody.AddParagraph("Hello World!!!");
+                    //Add body text to the slide
+                    IShape body = slide.AddTextBox(100, 150, 100, 200);
+                    body.TextBody.AddParagraph(SlideBody.Text);
+
+                    //Insert images on the right of the slide
 
                     //Save the PowerPoint presentation
                     powerpointDoc.Save(fbd.SelectedPath + "/ExampleSlide.pptx");

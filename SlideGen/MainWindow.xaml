@@ -8,8 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <StackPanel>
-            <TextBox Text="Title" TextAlignment="Center" Width="300" Height="20" Margin="5" />
-            <TextBox Text="Insert Slide Text Here" TextAlignment="Left" MinHeight="200" Margin="5"  />
+            <TextBox Name="SlideTitle" Text="Title" TextAlignment="Center" Width="300" Height="20" Margin="5" />
+            <TextBox Name="SlideBody"  Text="Insert slide text here" TextAlignment="Left" MinHeight="200" Margin="5"  />
             <TextBlock TextAlignment="Center">Suggested Images</TextBlock>
 
             <StackPanel Orientation="Horizontal">
