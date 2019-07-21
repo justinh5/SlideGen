@@ -13,25 +13,14 @@
             <TextBox Name="SlideBody"  Text="Insert slide text here" TextAlignment="Left" MinHeight="200" Margin="5"  />
             <TextBlock TextAlignment="Center">Suggested Images</TextBlock>
 
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Name="SuggestedImages">
                 <StackPanel.Resources>
                     <Style TargetType="{x:Type Image}">
                         <Setter Property="Margin" Value="10,0,10,5"/>
                     </Style>
                 </StackPanel.Resources>
-                <StackPanel>
-                   <Image Height="100" Source="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg"/>
-                    <CheckBox HorizontalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel>
-                    <Image Height="100" Source="https://www.w3schools.com/w3images/fjords.jpg"/>
-                    <CheckBox HorizontalAlignment="Center"/>
-                </StackPanel>
-                <StackPanel>
-                    <Image Height="100" Source="https://www.w3schools.com/w3images/fjords.jpg"/>
-                    <CheckBox HorizontalAlignment="Center"/>
-                </StackPanel>
             </StackPanel>
+
             <Button x:Name="generate" Width="100" Margin="10" Click="generate_Click">Generate Slide</Button>
         </StackPanel>
         

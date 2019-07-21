@@ -1,18 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using SlideGen.Services;
 using Syncfusion.Presentation;
 
@@ -32,6 +22,7 @@ namespace SlideGen
             imgService = new ImageService();
 
             string[] results = imgService.GetImages("banana cake");
+            loadSuggestedImages(results);
         }
 
         private void generate_Click(object sender, RoutedEventArgs e)
@@ -70,6 +61,26 @@ namespace SlideGen
 
             //Completion message
             System.Windows.MessageBox.Show("Powerpoint slide saved!", "Powerpoint generator");
+        }
+
+        private void loadSuggestedImages(string[] imgURIs)
+        {
+            foreach(string uri in imgURIs)
+            {
+                StackPanel sp = new StackPanel();
+                Image thumb = new Image();
+                thumb.Height = 100;
+                BitmapImage BitImg = new BitmapImage(new Uri(uri));
+                thumb.Source = BitImg;
+                System.Windows.Controls.CheckBox cb = new System.Windows.Controls.CheckBox();
+                cb.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+
+                sp.Children.Add(thumb);
+                sp.Children.Add(cb);
+
+                SuggestedImages.Children.Add(sp);
+            }
+
         }
     }
 }
