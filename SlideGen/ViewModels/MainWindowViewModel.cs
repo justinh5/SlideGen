@@ -13,26 +13,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using SlideGen.Services;
 using Syncfusion.Presentation;
 
-namespace SlideGen
+namespace SlideGen.ViewModels
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    class MainWindowViewModel
     {
-
-        private ImageService imgService;
-
-        public MainWindow()
-        {
-            InitializeComponent();
-            imgService = new ImageService();
-
-            string[] results = imgService.GetImages("banana cake");
-        }
 
         private void generate_Click(object sender, RoutedEventArgs e)
         {
@@ -52,11 +38,11 @@ namespace SlideGen
 
                     //Add Title to the slide
                     IShape title = slide.AddTextBox(400, 80, 500, 100);
-                    title.TextBody.AddParagraph(SlideTitle.Text);
+                    //title.TextBody.AddParagraph(SlideTitle.Text);
 
                     //Add body text to the slide
                     IShape body = slide.AddTextBox(100, 150, 100, 200);
-                    body.TextBody.AddParagraph(SlideBody.Text);
+                    //body.TextBody.AddParagraph(SlideBody.Text);
 
                     //Insert images on the right of the slide
 
