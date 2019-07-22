@@ -1,7 +1,0 @@
-language: csharp
-mono: none
-dotnet: 4.7.2
-solution: SlideGen.sln
-script:
-  - dotnet restore
-  - dotnet test
