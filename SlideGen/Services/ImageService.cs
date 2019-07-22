@@ -6,7 +6,6 @@ namespace SlideGen.Services
 {
     class ImageService
     {
-        private const int maxImages = 5; 
         private string baseURL = "https://api.unsplash.com/search/photos";
         private string client_id = "40ae8488e79841686ad57cc16c165139c58d76d64c57f6eacea28b652e6bc3ea";
 
@@ -29,14 +28,14 @@ namespace SlideGen.Services
         // Parse the first 5 image results and return an array of the thumbnail URIs
         private string[] parseImgURIs(JToken results)
         {
-            string[] imgList = new string[maxImages];
+            string[] imgList = new string[Constants.maxImages];
 
             int i = 0;
             foreach (var item in results)
             {
                 imgList[i] = $"{item["urls"]["small"]}";
                 ++i;
-                if(i >= maxImages)
+                if(i >= Constants.maxImages)
                 {
                     break;
                 }
