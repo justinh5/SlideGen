@@ -33,6 +33,10 @@ namespace SlideGen
             InitTimer();
             previousTitle = "";
         }
+
+        /// <summary>
+        /// Initializes the timer for suggested image refresh.
+        /// </summary>
         public void InitTimer()
         {
             imgTimer = new Timer();
@@ -123,7 +127,11 @@ namespace SlideGen
             System.Windows.MessageBox.Show("Powerpoint slide saved!", "Powerpoint generator");
         }
 
-
+        /// <summary>
+        /// Loads the images retrieved from the image service to the UI. The images are the contents of 
+        /// buttons, which are clickable to toggle a seletion on or off.
+        /// </summary>
+        /// <param name="imgURIs">Array of image URLs</param>
         private void loadSuggestedImages(string[] imgURIs)
         {
             //First clear all saved selected images and displayed images
@@ -152,7 +160,12 @@ namespace SlideGen
             }
         }
 
-
+        /// <summary>
+        /// Handler for an image's click event. The background of the image is toggled Cyan if selected
+        /// or default grey when unselected.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void imgClickHandler(object sender, RoutedEventArgs e)
         {
             // Selected button and image
