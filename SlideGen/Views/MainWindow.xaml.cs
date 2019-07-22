@@ -37,11 +37,11 @@ namespace SlideGen
         /// <summary>
         /// Initializes the timer for suggested image refresh.
         /// </summary>
-        public void InitTimer()
+        private void InitTimer()
         {
             imgTimer = new Timer();
             imgTimer.Tick += new EventHandler(imgTimer_Tick);
-            imgTimer.Interval = 5000; // miliseconds
+            imgTimer.Interval = 5000; // milliseconds
             imgTimer.Start();
         }
 
