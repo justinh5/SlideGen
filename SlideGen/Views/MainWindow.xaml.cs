@@ -146,6 +146,7 @@ namespace SlideGen
                     Button imgButton = new Button
                     {
                         Height = 100,
+                        Padding = new Thickness(10, 10, 10, 10),
                         Content = new Image
                         {
                             Source = new BitmapImage(new Uri(uri)),
