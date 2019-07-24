@@ -215,7 +215,7 @@ namespace SlideGen
             TextRange range = new TextRange(SlideBody.Selection.Start, SlideBody.Selection.End);
             range.ApplyPropertyValue(TextElement.FontWeightProperty, FontWeights.Bold);
 
-            //Add selected text to list of keywords
+            //Parse new keywords out of newly bolded text
             keywordChange();
         }
 
@@ -231,6 +231,8 @@ namespace SlideGen
 
         /// <summary>
         /// Clears old saved keywords and parses new ones from the bodytext.
+        /// The textrange is found for individual words and the word is added to
+        /// the list of keywords if it has the bold property.
         /// </summary>
         private void keywordChange()
         {
@@ -245,17 +247,20 @@ namespace SlideGen
                 if (position == null) return;
             }
 
-            //Parse individual words from the textbox by moving pointer over text until whitespace is encountered
+            //Parse individual words from the text by locating delimiting whitespaces with the textpointer
             while (position != SlideBody.Document.ContentEnd && position.GetPositionAtOffset(1) != null)
             {
                 string currentString = "";
                 int i = 1;
+
+                //Offset textpointer until there is a whitespace or end of the text is reached
                 while (currentString.Contains(" ") == false && position.GetPositionAtOffset(i) != null)
                 {
                     TextRange range = new TextRange(position, position.GetPositionAtOffset(i));
                     currentString = range.Text;
                     ++i;
                 }
+
                 TextRange wordRange = new TextRange(position, position.GetPositionAtOffset(i-2));
                 object oFont = wordRange.GetPropertyValue(Run.FontWeightProperty);
                 if(oFont.ToString() == "Bold")
@@ -263,7 +268,7 @@ namespace SlideGen
                     keywords.Add(wordRange.Text);
                 }
 
-                position = position.GetPositionAtOffset(i - 1);
+                position = position.GetPositionAtOffset(i-1);  // move the pointer after the last whitespace encountered
             }
         }
     }
